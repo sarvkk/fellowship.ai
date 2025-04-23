@@ -1,0 +1,87 @@
+              
+ [~/Documents/passion-project/fellowship.ai/nlp-entrance]
+ ✘ LLMs  sarvkk  python imdb-sentiment-analysis.py                                   
+Loading dataset...
+
+Sample data:
+                                                  review sentiment
+29154  Riget II is a good sequel, but not quite as go...  positive
+1739   Obviously, the comments above that fawn over t...  negative
+48364  Let me start by saying that Liev has gained a ...  positive
+
+Sentiment value counts (1: positive, 0: negative):
+sentiment
+1    25000
+0    25000
+Name: count, dtype: int64
+
+Preprocessing text data...
+
+Original review [100]:
+This short film that inspired the soon-to-be full length feature - Spatula Madness - is a hilarious piece that contends against similar cartoons yielding multiple writers. The short film stars Edward the Spatula who after being fired from his job, joins in the fight against the evil spoons. This pre...
+
+Processed review [100]:
+short film inspired soon full length feature spatula madness hilarious piece contends similar cartoons yielding multiple writers short film stars edward spatula fired job joins fight evil spoons premise allows funny content near beginning barely present remainder feature film minute running time abs...
+
+Training set size: 40000 samples
+Testing set size: 10000 samples
+
+Fitting TF-IDF Vectorizer...
+Shape of TF-IDF matrix (Train): (40000, 5000)
+Shape of TF-IDF matrix (Test): (10000, 5000)
+
+Evaluating multiple models with cross-validation...
+
+Training and evaluating Logistic Regression...
+Test accuracy: 0.8939
+Cross-validation (5-fold): 0.8869 (±0.0039)
+Training time: 1.04 seconds
+
+Training and evaluating Naive Bayes...
+Test accuracy: 0.8567
+Cross-validation (5-fold): 0.8535 (±0.0027)
+Training time: 0.03 seconds
+
+Training and evaluating Linear SVM...
+Test accuracy: 0.8828
+Cross-validation (5-fold): 0.8783 (±0.0033)
+Training time: 1.18 seconds
+
+Training and evaluating Random Forest...
+Test accuracy: 0.8561
+Cross-validation (5-fold): 0.8483 (±0.0038)
+Training time: 160.27 seconds
+
+Best model: Logistic Regression with CV accuracy: 0.8869
+
+Detailed evaluation of the best model:
+Confusion Matrix for Logistic Regression:
+[[4434  566]
+ [ 495 4505]]
+
+Classification Report for Logistic Regression:
+Negative (0): precision=0.8996, recall=0.8868, f1-score=0.8931
+Positive (1): precision=0.8884, recall=0.9010, f1-score=0.8946
+
+Performing hyperparameter tuning for Logistic Regression...
+Best parameters: {'C': 1.0, 'penalty': 'l2', 'solver': 'liblinear'}
+Best cross-validation score: 0.8869
+Tuned model test accuracy: 0.8939
+
+Saving the best model and vectorizer...
+Model saved as logistic_regression_model.pkl
+Vectorizer saved as tfidf_vectorizer.pkl
+Complete pipeline saved as sentiment_pipeline.pkl
+
+--- Testing on New Reviews ---
+
+Review: "This movie was absolutely fantastic! The acting was superb and the storyline kept me engaged through..."
+Predicted Sentiment: Positive (1)
+
+Review: "What a waste of time. The plot was predictable and the characters were incredibly boring. I would no..."
+Predicted Sentiment: Negative (0)
+
+Review: "It was an okay movie, not great but not terrible either. Some good moments but overall quite average..."
+Predicted Sentiment: Negative (0)
+
+--- Enhanced Sentiment Analysis Project Complete ---
